@@ -431,6 +431,7 @@
     "resetKeep": "Keep my data"
   },
   "cookie": {
+    "title": "Essential only",
     "body": "This demo keeps a session in this browser only. It does not set tracking cookies.",
     "accept": "Accept essential",
     "manage": "Cookie note"

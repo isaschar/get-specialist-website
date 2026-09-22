@@ -43,10 +43,17 @@ export function CookieBanner() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper p-4 shadow-[0_-8px_30px_rgba(20,20,20,0.08)]">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm leading-relaxed text-ink">{t("body")}</p>
-        <button type="button" className={btnPrimary + " shrink-0"} onClick={acceptEssential}>
+    <div
+      role="region"
+      aria-label={t("title")}
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper px-4 py-4 shadow-[0_-12px_40px_rgba(20,20,20,0.12)]"
+    >
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="max-w-3xl">
+          <p className="text-sm font-bold text-ink">{t("title")}</p>
+          <p className="mt-1 text-sm leading-relaxed text-ink">{t("body")}</p>
+        </div>
+        <button type="button" className={btnPrimary + " min-h-11 shrink-0"} onClick={acceptEssential}>
           {t("accept")}
         </button>
       </div>

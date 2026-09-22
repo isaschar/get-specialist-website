@@ -28,7 +28,7 @@ npm start
 - **Dispatch** — `/dispatch` groups every demo job as pending → assigned → in progress → completed.
 - **Reset** — Log in page → “Reset demo data” opens a confirm dialog and restores the three sample jobs (Tel Aviv-Yafo, Haifa, Jerusalem).
 
-A new deploy is the same Next.js app: `npm run build` then `npm start`, or the existing host’s production build. No new environment variables. Demo state stays in the browser (`localStorage` plus a `gs.flash` session note).
+A new deploy is the same Next.js app: `npm run build` then `npm start`, or the existing host’s production build. No new environment variables are required. `robots.txt` and `sitemap.xml` use `https://get-specialist-website.vercel.app` unless `NEXT_PUBLIC_SITE_URL` is set. Jobs stay in `localStorage` and sync across tabs. Each tab’s role stays in `sessionStorage`, so one window can remain a client while another remains a pro. Session notes use `gs.flash`.
 
 Sample people use reserved demo phone numbers (`050-000-…`). They are not real customers.
 

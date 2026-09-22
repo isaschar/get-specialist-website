@@ -15,6 +15,7 @@ import { initialDemoState, normalizeDemoState } from "@/lib/seed";
 import type { DemoState, Job, Localized, Role } from "@/lib/types";
 
 const STORAGE_KEY = "get-specialist-demo-v1";
+const SESSION_KEY = "get-specialist-demo-session";
 
 type DemoContextValue = {
   ready: boolean;
@@ -36,8 +37,24 @@ const serverState = initialDemoState();
 const listeners = new Set<() => void>();
 let memory: DemoState | null = null;
 
+function readTabSession(): DemoState["session"] | undefined {
+  if (typeof window === "undefined") return undefined;
+  const raw = sessionStorage.getItem(SESSION_KEY);
+  if (raw === null) return undefined;
+  try {
+    return raw === "null" ? null : (JSON.parse(raw) as DemoState["session"]);
+  } catch {
+    return undefined;
+  }
+}
+
+function writeTabSession(session: DemoState["session"]) {
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+}
+
 function emit(next: DemoState) {
   memory = next;
+  writeTabSession(next.session);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   listeners.forEach((listener) => listener());
 }
@@ -46,7 +63,11 @@ function readClient(): DemoState {
   if (memory) return memory;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    memory = raw ? normalizeDemoState(JSON.parse(raw)) : initialDemoState();
+    const base = raw ? normalizeDemoState(JSON.parse(raw)) : initialDemoState();
+    const tabSession = readTabSession();
+    const session = tabSession === undefined ? base.session : tabSession;
+    memory = { ...base, session };
+    if (tabSession === undefined) writeTabSession(session);
   } catch {
     memory = initialDemoState();
   }
@@ -66,7 +87,9 @@ function ensureStorageSync() {
   window.addEventListener("storage", (event) => {
     if (event.key !== STORAGE_KEY || !event.newValue) return;
     try {
-      memory = normalizeDemoState(JSON.parse(event.newValue));
+      const incoming = normalizeDemoState(JSON.parse(event.newValue));
+      const tabSession = readTabSession();
+      memory = { ...incoming, session: tabSession === undefined ? incoming.session : tabSession };
       listeners.forEach((listener) => listener());
     } catch {
       memory = initialDemoState();

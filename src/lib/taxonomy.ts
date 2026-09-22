@@ -131,8 +131,8 @@ export function lifecycleOf(status: JobStatus): LifecycleStage {
     case "EN_ROUTE":
     case "ON_SITE":
     case "IN_PROGRESS":
-    case "COMPLETED_PRO":
       return "in_progress";
+    case "COMPLETED_PRO":
     case "COMPLETED":
     case "RATED":
       return "completed";
