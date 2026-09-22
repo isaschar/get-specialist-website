@@ -1,0 +1,506 @@
+{
+  "meta": {
+    "title": "Get Specialist",
+    "description": "Book trusted home pros across Israel — plumbing, electricity, cleaning, and more. Clear steps, local help, less hassle."
+  },
+  "nav": {
+    "home": "Home",
+    "clients": "For clients",
+    "pros": "For professionals",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Log in",
+    "logout": "Log out",
+    "openApp": "Open app",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "menu": "Open menu",
+    "close": "Close menu",
+    "primary": "Primary",
+    "dispatch": "Dispatch",
+    "skip": "Skip to content",
+    "getSpecialist": "Get a specialist",
+    "how": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ"
+  },
+  "lang": {
+    "button": "עברית",
+    "aria": "Switch to Hebrew"
+  },
+  "footer": {
+    "blurb": "Get Specialist connects households in Israel with independent home pros. We are the marketplace — not the tradesperson.",
+    "emergency": "Not 100 / 101 / 102 — for emergencies, call Israeli emergency services.",
+    "draft": "Privacy and Terms are drafts for product scaffolding, not legal advice. Replace [COMPANY_LEGAL_NAME] and the other placeholders before any public launch.",
+    "rights": "Get Specialist · מגיע מומחה",
+    "partners": "Partners",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "cities": "Cities",
+    "cookies": "Cookies",
+    "categories": "Categories",
+    "telAviv": "Tel Aviv-Yafo",
+    "jerusalem": "Jerusalem",
+    "haifa": "Haifa"
+  },
+  "home": {
+    "eyebrow": "Home services across Israel",
+    "headline": "The right specialist. At your door.",
+    "headlineLines": ["The right", "specialist.", "At your door."],
+    "subhead": "Book trusted home pros across Israel — plumbing, electricity, cleaning, and more. Clear steps, local help, less hassle.",
+    "primaryCta": "Get a specialist",
+    "secondaryCta": "Join as a pro",
+    "howTitle": "How it works",
+    "steps": {
+      "1": {
+        "title": "Tell us what you need",
+        "body": "Pick a category, describe the job, and share your address and preferred time."
+      },
+      "2": {
+        "title": "Get matched",
+        "body": "We connect you with available verified specialists nearby (auto or assisted dispatch)."
+      },
+      "3": {
+        "title": "Confirm & track",
+        "body": "Accept an offer, see who’s coming, and follow the job through to completion."
+      },
+      "4": {
+        "title": "Rate & done",
+        "body": "Leave a short review so the next neighbour finds the right pro faster."
+      }
+    },
+    "categoriesTitle": "Everyday home categories",
+    "categoriesLead": "Plumbing, electricity, HVAC, locksmith, painting, cleaning, appliances, moving, handyman, pest control, and gardening.",
+    "trustTitle": "Clear about what we are",
+    "trust": {
+      "verified": {
+        "title": "Verified specialists",
+        "body": "We aim to check identity and relevant trade details before matching (checks may vary by category)."
+      },
+      "pricing": {
+        "title": "Know before you go",
+        "body": "See scope and price intent in the job flow where available; final terms are between you and the independent pro."
+      },
+      "support": {
+        "title": "Human support",
+        "body": "Reach us at [SUPPORT_EMAIL] when something goes wrong."
+      },
+      "insurance": {
+        "title": "Insurance",
+        "body": "Any insurance or coverage statements are product- and policy-dependent. Placeholder: coverage details TBD; do not assume platform insurance for on-site work until published."
+      },
+      "intermediary": {
+        "title": "We connect you",
+        "body": "Get Specialist is a marketplace intermediary. Pros are independent. We do not personally perform the trade work."
+      },
+      "emergency": {
+        "title": "Not 100 / 101 / 102",
+        "body": "For emergencies, call Israeli emergency services."
+      }
+    },
+    "citiesTitle": "Demo cities",
+    "citiesLead": "Sample jobs start in Tel Aviv-Yafo, Jerusalem, and Haifa. A pro is not guaranteed in every neighbourhood.",
+    "finalTitle": "Home help without the runaround.",
+    "finalBody": "Post a job in minutes. Get matched with specialists near you. Track the visit until it’s done.",
+    "cardStatus": "In progress",
+    "cardTitle": "Kitchen sink leak under cabinet",
+    "cardPro": "Avi K. is on site",
+    "cardCity": "Tel Aviv-Yafo · Plumbing",
+    "learnMore": "Learn more",
+    "cityLabel": "City"
+  },
+  "clients": {
+    "metaTitle": "For clients",
+    "heroTitle": "Home help without the runaround.",
+    "heroBody": "Post a job in minutes. Get matched with specialists near you. Track the visit until it’s done.",
+    "browse": "Browse categories",
+    "whyTitle": "Why Get Specialist",
+    "why": [
+      "Clear categories for everyday Israeli home needs.",
+      "Verified-pro intent (ID / trade checks where applicable — product-dependent).",
+      "Transparent pricing *intent* (see quotes before you commit where the flow supports it).",
+      "Bilingual HE/EN interface."
+    ],
+    "howTitle": "How booking works",
+    "pricingTitle": "Pricing & payments",
+    "pricing1": "Platform may facilitate payment flows; we are not a bank.",
+    "pricing2": "Final price depends on the job scope agreed with the independent pro.",
+    "supportTitle": "Stuck? We’re here.",
+    "supportBody": "Contact support → [SUPPORT_EMAIL]",
+    "supportCta": "Contact support"
+  },
+  "pros": {
+    "metaTitle": "For professionals",
+    "heroTitle": "More local jobs. Less empty driving.",
+    "heroBody": "Set availability, get matched to nearby requests, complete work, and grow your ratings.",
+    "primaryCta": "Join as a pro",
+    "secondaryCta": "Talk to us",
+    "benefitsTitle": "Benefits",
+    "benefits": [
+      "Jobs near you across Israel’s cities and towns.",
+      "Flexible availability — you choose when you’re on.",
+      "Clear job briefs from clients (category, description, location).",
+      "Payout stub: platform may facilitate settlement; banking partner TBD."
+    ],
+    "howTitle": "How it works for pros",
+    "steps": [
+      "Create a pro profile and set categories + service area.",
+      "Go available and receive offers / matches.",
+      "Accept, arrive on-site, complete the job.",
+      "Get rated and move to the next request."
+    ],
+    "requirementsTitle": "Requirements (intent)",
+    "requirements": [
+      "Accurate trade info; licenses where the law requires for your category.",
+      "Respectful communication; show up when you accept.",
+      "Independent contractor status — you are not an employee of the platform."
+    ],
+    "trustTitle": "Trust & quality",
+    "trust1": "Verified-pro badges (product-defined checks).",
+    "trust2": "Ratings and completion history matter for future matches."
+  },
+  "about": {
+    "metaTitle": "About",
+    "heroTitle": "A neighbourhood marketplace for Israeli homes.",
+    "heroBody": "Get Specialist helps people book independent home pros — and helps those pros find nearby work. Clear steps, local help, less hassle.",
+    "roleTitle": "We connect you",
+    "roleBody": "Get Specialist is a marketplace intermediary. Pros are independent. We do not personally perform the trade work.",
+    "citiesTitle": "First cities in this demo",
+    "citiesBody": "Tel Aviv-Yafo, Jerusalem, and Haifa are the sample service areas. We do not guarantee a pro in every neighbourhood.",
+    "trustTitle": "Trust, without overclaiming",
+    "trustBody": "We aim to check identity and relevant trade details before matching (checks may vary by category). Any insurance or coverage statements are product- and policy-dependent. Placeholder: coverage details TBD; do not assume platform insurance for on-site work until published."
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "heroTitle": "Stuck? We’re here.",
+    "heroBody": "Clients, pros, and privacy requests. This demo form stays on the page — it does not send email.",
+    "name": "Name",
+    "email": "Email",
+    "role": "I am",
+    "client": "A client",
+    "pro": "A professional",
+    "other": "Someone else",
+    "message": "Message",
+    "send": "Submit demo message",
+    "success": "Saved on this page only. Nothing was sent.",
+    "emails": "When these placeholders are replaced, write to support or privacy:"
+  },
+  "legal": {
+    "metaPrivacy": "Privacy",
+    "metaTerms": "Terms",
+    "bannerEn": "DRAFT — NOT LEGAL ADVICE. Not a substitute for counsel. For internal product scaffolding only.",
+    "bannerHe": "טיוטה — אינה ייעוץ משפטי.",
+    "note": "Bracketed placeholders are not real company details. Do not invent a company number. Counsel must replace them before any public launch."
+  },
+  "emergency": {
+    "title": "We’re not emergency services.",
+    "body": "For life-threatening or urgent public emergencies, call 100 / 101 / 102 (or the appropriate Israeli emergency number). Get Specialist is for non-emergency home services."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That link does not match a page on Get Specialist.",
+    "home": "Back home"
+  },
+  "login": {
+    "eyebrow": "Demo login",
+    "title": "Pick a sample profile.",
+    "body": "No password. The session and any jobs you create stay in this browser. Switch language any time — the interface follows you.",
+    "clients": "Continue as a client",
+    "pros": "Continue as a pro",
+    "continueClient": "Enter client demo",
+    "continuePro": "Enter pro demo",
+    "reset": "Reset demo data",
+    "resetConfirm": "Replace everything in this browser with the original three sample jobs?",
+    "resetYes": "Reset",
+    "resetNo": "Keep my data"
+  },
+  "wizard": {
+    "title": "New request",
+    "lead": "Tell us the category, what happened, and where. Matching starts as soon as you submit.",
+    "steps": {
+      "category": "Category",
+      "details": "Details",
+      "place": "Place & time",
+      "review": "Review"
+    },
+    "errors": {
+      "category": "Choose a category.",
+      "details": "Add a title (4+ characters) and a description (10+ characters).",
+      "title": "Add a title of at least 4 characters.",
+      "description": "Add a description of at least 10 characters.",
+      "place": "Choose a city, an address, and a time window.",
+      "city": "Choose a city.",
+      "address": "Add an address.",
+      "time": "Choose a time window.",
+      "ack": "Confirm this is not an emergency before posting.",
+      "session": "Log in as a client to post a request."
+    },
+    "jobTitle": "Job title",
+    "jobDescription": "What needs doing",
+    "addLanguage": "Also write this in the other language",
+    "altTitle": "Title in the other language",
+    "altDescription": "Description in the other language",
+    "city": "City",
+    "choose": "Choose",
+    "address": "Address",
+    "time": "Preferred time",
+    "price": "Price intent (optional, ₪)",
+    "priceHelp": "A non-binding hint. Final terms are between you and the independent pro.",
+    "ack": "I understand Get Specialist is not emergency services. For life-threatening or urgent emergencies I will call 100 / 101 / 102.",
+    "back": "Back",
+    "next": "Continue",
+    "submit": "Post request",
+    "stepOf": "Step {current} of {total}"
+  },
+  "app": {
+    "demo": "Demo",
+    "newRequest": "New request",
+    "myJobs": "My jobs",
+    "available": "Available jobs",
+    "assignments": "My assignments",
+    "profile": "Profile",
+    "redirecting": "Taking you to demo login…",
+    "wrongRoleTitle": "This area is for the other role.",
+    "wrongRoleBody": "Switch to a client or pro demo profile to continue.",
+    "switchProfile": "Switch profile",
+    "myJobsLead": "Requests on this demo profile, including the sample jobs.",
+    "availableLead": "Open requests waiting for a pro. Claim one to move it from pending to assigned.",
+    "goOffline": "Go offline",
+    "goOnline": "Go available",
+    "offline": "You are offline, so you will not receive new offers until you go available.",
+    "noAvailable": "No open jobs right now.",
+    "noAssignments": "You have not claimed a job yet.",
+    "categoryMatch": "Matches your categories",
+    "categoryOutside": "Outside your usual categories — you can still claim it in this demo",
+    "unassigned": "— (unassigned)",
+    "posted": "Request posted. Matching has started.",
+    "missingTitle": "Job not found",
+    "missingBody": "It may have been cleared when demo data was reset.",
+    "backToList": "Back to jobs",
+    "description": "Description",
+    "otherLanguage": "Also written as",
+    "address": "Address",
+    "time": "Time window",
+    "priceIntent": "Price intent",
+    "priceOpen": "No price intent yet",
+    "client": "Client",
+    "pro": "Pro",
+    "payout": "Payout stub",
+    "actions": "Next step",
+    "claim": "Claim this job",
+    "release": "Release and return to matching",
+    "cancel": "Cancel request",
+    "rateHelp": "The pro marked the work done. Rate it to close the job.",
+    "rating": "Rating",
+    "comment": "Short review (optional)",
+    "submitRating": "Submit rating",
+    "rated": "Rated {score} / 5",
+    "waitingClient": "Waiting for the client to confirm and rate.",
+    "notYourJob": "This sample job belongs to another client. You can read it; only they can cancel or rate it.",
+    "action": {
+      "en_route": "I’m on the way",
+      "start": "I’ve arrived — start work",
+      "complete": "Mark work complete"
+    },
+    "errors": {
+      "not_found": "That job is no longer in this browser.",
+      "offline": "Go available before claiming a job.",
+      "not_claimable": "This job is no longer open.",
+      "not_owner": "This action belongs to the assigned person.",
+      "bad_transition": "That status change is not available now.",
+      "not_client": "Log in as the client to do that.",
+      "not_pro": "Log in as a pro to do that."
+    },
+    "dispatchTitle": "Dispatch",
+    "dispatchBody": "Hybrid stub. The request is matched automatically, then a pro claims it here. This is not emergency dispatch.",
+    "payoutTitle": "Payout",
+    "payoutBody": "Ledger only. The platform may facilitate settlement later; nothing is paid out in this demo.",
+    "history": "Status history",
+    "pipelineHint": "Stages run pending, assigned, in progress, then completed. The smaller label is the detailed dispatch status.",
+    "profileStub": "Profile stub",
+    "independent": "Independent contractor in this demo — not an employee of the platform. Trade checks are a product intent, not a completed verification.",
+    "categories": "Categories",
+    "serviceArea": "Service area",
+    "phone": "Demo phone",
+    "verifiedBadge": "Verified-pro badge (demo)",
+    "availability": "Availability",
+    "onlineHelp": "You are available for new offers.",
+    "completedCount": "{count} completed in the sample profile",
+    "reset": "Reset demo data",
+    "filter": {
+      "all": "All",
+      "active": "Active",
+      "done": "Done"
+    },
+    "emptyJobs": "No jobs on this filter yet."
+  },
+  "lifecycle": {
+    "pending": "Pending",
+    "assigned": "Assigned",
+    "in_progress": "In progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "disputed": "Disputed"
+  },
+  "status": {
+    "DRAFT": "Draft",
+    "POSTED": "Posted",
+    "MATCHING": "Matching",
+    "OFFERED": "Offered",
+    "MATCHED": "Matched",
+    "ACCEPTED": "Accepted",
+    "CONFIRMED": "Confirmed",
+    "EN_ROUTE": "On the way",
+    "ON_SITE": "On site",
+    "IN_PROGRESS": "In progress",
+    "COMPLETED_PRO": "Pro marked done",
+    "COMPLETED": "Completed",
+    "RATED": "Rated",
+    "CANCELLED_CLIENT": "Cancelled by client",
+    "CANCELLED_PRO": "Cancelled by pro",
+    "CANCELLED_DISPATCH": "Cancelled by dispatch",
+    "UNFILLED": "Unfilled",
+    "DISPUTED": "Disputed"
+  },
+  "payout": {
+    "NOT_APPLICABLE": "Not applicable",
+    "PENDING": "Pending",
+    "PROCESSING": "Processing",
+    "PAID": "Paid (stub)",
+    "FAILED": "Failed"
+  },
+  "time": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "flexible": "Flexible"
+  },
+  "dispatch": {
+    "eyebrow": "Dispatch stub",
+    "title": "Job board",
+    "body": "Every demo job, grouped the way dispatch would see it: pending, assigned, in progress, completed. Nothing here sends a real pro or an emergency responder.",
+    "empty": "Nothing in this stage.",
+    "stages": {
+      "pending": "Pending",
+      "assigned": "Assigned",
+      "in_progress": "In progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "disputed": "Disputed"
+    }
+  },
+  "demoChip": {
+    "label": "DEMO",
+    "client": "Client",
+    "pro": "Pro",
+    "dispatch": "Dispatch"
+  },
+  "flash": {
+    "posted": "Request posted. Matching has started.",
+    "cancelled": "Request cancelled.",
+    "rated": "Rating saved. The job is closed.",
+    "wrongRole": "That area is for a different demo role. You were sent back.",
+    "dismiss": "Dismiss",
+    "err_not_found": "That job is no longer in this browser.",
+    "err_offline": "Go available before claiming a job.",
+    "err_not_claimable": "This job is no longer open.",
+    "err_not_owner": "This action belongs to the assigned person.",
+    "err_bad_transition": "That status change is not available now.",
+    "err_not_client": "Log in as the client to do that.",
+    "err_not_pro": "Log in as a pro to do that.",
+    "err_session": "Log in as a client to post a request."
+  },
+  "overlay": {
+    "close": "Close",
+    "cancelTitle": "Cancel this request?",
+    "cancelBody": "The job leaves the open board. This demo does not send a message or a refund.",
+    "cancelConfirm": "Cancel request",
+    "cancelKeep": "Keep request",
+    "releaseTitle": "Release this job?",
+    "releaseBody": "It returns to matching and drops off your assignments.",
+    "releaseConfirm": "Release job",
+    "releaseKeep": "Keep it",
+    "offerTitle": "Take this job?",
+    "offerBody": "Confirming assigns it to you in this demo. Nothing is paid out.",
+    "offerConfirm": "Confirm and claim",
+    "offerBack": "Not now",
+    "resetTitle": "Reset demo data?",
+    "resetBody": "Replace everything in this browser with the original three sample jobs?",
+    "resetConfirm": "Reset",
+    "resetKeep": "Keep my data"
+  },
+  "cookie": {
+    "title": "Essential only",
+    "body": "This demo keeps a session in this browser only. It does not set tracking cookies.",
+    "accept": "Accept essential",
+    "manage": "Cookie note"
+  },
+  "pricingPage": {
+    "title": "Pricing",
+    "meta": "Pricing",
+    "oneLiner": "We’re not charging in this demo — the live fee model is still TBD.",
+    "escrow": "Demo stub — not real escrow, not a bank, and “Verified” means product-defined checks only (not a government license).",
+    "more": "Questions"
+  },
+  "faqPage": {
+    "title": "FAQ",
+    "meta": "FAQ",
+    "lead": "Titles are fixed for this demo. Where an answer is still open, it stays TBD — nothing here invents a fee, an email, or a company number.",
+    "tbd": "TBD",
+    "support": "Write to [SUPPORT_EMAIL]. This demo does not publish another address.",
+    "legal": "The Privacy Policy and Terms on this site are drafts, not final documents.",
+    "items": [
+      { "q": "Is Get Specialist available in my city?" },
+      { "q": "Are specialists employees of Get Specialist?" },
+      { "q": "Do you handle emergencies?" },
+      { "q": "How does pro verification work?" },
+      { "q": "How do payments and pricing work?" },
+      { "q": "How do I join as a professional?" },
+      { "q": "Can I use the site in Hebrew and English?" },
+      { "q": "Does the platform provide insurance?" },
+      { "q": "How do I contact support?" },
+      { "q": "Are the Privacy Policy and Terms final?" }
+    ]
+  },
+  "howPage": {
+    "title": "How it works",
+    "meta": "How it works",
+    "lead": "Four steps in this demo. Nothing here is live dispatch."
+  },
+  "earn": {
+    "demoOnly": "Demo only · not a real payout"
+  },
+  "proHome": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "available": "Available",
+    "unavailable": "Not available",
+    "openNear": "Open near you",
+    "needsAction": "Needs action",
+    "doneDemo": "Closed in this demo",
+    "inbox": "Needs action",
+    "inboxEmpty": "Nothing waiting on you.",
+    "nearby": "New near you",
+    "nearbyEmpty": "No open jobs in your cities.",
+    "review": "Review offer",
+    "open": "Open",
+    "nearbyTab": "Nearby",
+    "active": "Active",
+    "done": "Done",
+    "earningsTitle": "Earnings",
+    "earningsBody": "No amounts are shown. This demo does not invent a fee or a payout.",
+    "earningsCount": "{count} jobs marked done on this profile",
+    "tabsHome": "Home",
+    "tabsJobs": "Jobs",
+    "tabsAssignments": "Assignments",
+    "tabsEarnings": "Earnings",
+    "tabsProfile": "Profile",
+    "overflow": "Later",
+    "calendar": "Calendar",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "overflowBody": "Not in this demo."
+  }
+}
