@@ -22,7 +22,7 @@ export function DispatchBoard() {
     <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10">
       <div className="max-w-3xl">
         <p className="text-sm font-bold text-sea">{t("eyebrow")}</p>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight">{t("title")}</h1>
+        <h1 className="mt-2 text-4xl font-bold tracking-[-0.035em] md:text-6xl">{t("title")}</h1>
         <p className="mt-3 text-lg leading-relaxed text-ink/75">{t("body")}</p>
       </div>
       <div className="grid gap-4">

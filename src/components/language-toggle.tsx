@@ -14,7 +14,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
   return (
     <button
       type="button"
-      className={`rounded-full border border-line bg-paper px-3 py-2 text-sm font-bold text-ink transition hover:border-accent ${className}`}
+      className={`px-2 py-2 text-[15px] font-semibold text-ink hover:text-accent ${className}`}
       aria-label={t("aria")}
       onClick={() => router.replace(pathname, { locale: next })}
     >

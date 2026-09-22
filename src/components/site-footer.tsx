@@ -9,29 +9,72 @@ export function SiteFooter() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
 
+  const columns = [
+    {
+      title: t("product"),
+      links: [
+        { href: "/for-clients", label: nav("clients") },
+        { href: "/for-pros", label: nav("pros") },
+        { href: "/#categories", label: t("categories") },
+        { href: "/dispatch", label: nav("dispatch") },
+      ],
+    },
+    {
+      title: t("company"),
+      links: [
+        { href: "/about", label: nav("about") },
+        { href: "/contact", label: nav("contact") },
+        { href: "/login", label: nav("login") },
+      ],
+    },
+    {
+      title: t("legal"),
+      links: [
+        { href: "/privacy", label: nav("privacy") },
+        { href: "/terms", label: nav("terms") },
+      ],
+    },
+    {
+      title: t("cities"),
+      links: [
+        { href: "/client/jobs/new?city=tel_aviv", label: t("telAviv") },
+        { href: "/client/jobs/new?city=jerusalem", label: t("jerusalem") },
+        { href: "/client/jobs/new?city=haifa", label: t("haifa") },
+      ],
+    },
+  ];
+
   return (
-    <footer className="mt-auto border-t border-line bg-mist">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1.4fr_1fr]">
+    <footer className="mt-auto border-t border-line bg-paper">
+      <div className="mx-auto grid max-w-[1120px] gap-12 px-4 py-16 md:grid-cols-[1.1fr_2.2fr] md:px-6 md:py-20">
         <div>
           <Logo />
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink/75">{t("blurb")}</p>
-          <p className="mt-3 text-sm font-semibold text-sea">{t("emergency")}</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/70">{t("blurb")}</p>
         </div>
-        <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
-          <Link href="/for-clients" className="hover:text-sea">{nav("clients")}</Link>
-          <Link href="/for-pros" className="hover:text-sea">{nav("pros")}</Link>
-          <Link href="/about" className="hover:text-sea">{nav("about")}</Link>
-          <Link href="/contact" className="hover:text-sea">{nav("contact")}</Link>
-          <Link href="/dispatch" className="hover:text-sea">{nav("dispatch")}</Link>
-          <Link href="/login" className="hover:text-sea">{nav("login")}</Link>
-          <Link href="/privacy" className="hover:text-sea">{nav("privacy")}</Link>
-          <Link href="/terms" className="hover:text-sea">{nav("terms")}</Link>
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h2 className="text-[15px] font-bold text-ink">{column.title}</h2>
+              <ul className="mt-5 grid gap-3.5">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-ink/60 hover:text-ink">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs leading-relaxed text-ink/70 md:flex-row md:items-center md:justify-between">
-          <p>{t("rights")}</p>
-          <p>{applyPlaceholders(t("draft"))}</p>
+        <div className="mx-auto flex max-w-[1120px] flex-col gap-3 px-4 py-5 text-xs leading-relaxed text-ink/60 md:px-6">
+          <p className="font-semibold text-ink/80">{t("emergency")}</p>
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p>{t("rights")}</p>
+            <p className="max-w-xl">{applyPlaceholders(t("draft"))}</p>
+          </div>
         </div>
       </div>
     </footer>

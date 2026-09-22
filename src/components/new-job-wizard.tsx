@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "@/i18n/navigation";
 import {
   CATEGORY_IDS,
+  CITY_IDS,
   TIME_WINDOW_IDS,
   type CategoryId,
   type CityId,
@@ -40,7 +41,10 @@ export function NewJobWizard() {
   const [titleAlt, setTitleAlt] = useState("");
   const [descriptionAlt, setDescriptionAlt] = useState("");
   const [showAlt, setShowAlt] = useState(false);
-  const [city, setCity] = useState<CityId | "">("");
+  const presetCity = params.get("city");
+  const [city, setCity] = useState<CityId | "">(
+    (CITY_IDS as readonly string[]).includes(presetCity ?? "") ? (presetCity as CityId) : "",
+  );
   const [address, setAddress] = useState("");
   const [timeWindow, setTimeWindow] = useState<TimeWindowId | "">("");
   const [price, setPrice] = useState("");

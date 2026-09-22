@@ -3,24 +3,22 @@ import { loc } from "@/lib/locale-text";
 import { CATEGORIES } from "@/lib/taxonomy";
 import { CategoryIcon } from "./category-icon";
 
-export function CategoryGrid({ locale }: { locale: string }) {
+export function CategoryGrid({ locale, compact = false }: { locale: string; compact?: boolean }) {
   return (
-    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {CATEGORIES.map((category) => (
         <li key={category.id}>
           <Link
             href={`/client/jobs/new?category=${category.id}`}
-            className="flex h-full gap-3 rounded-3xl border border-line bg-paper p-4 transition hover:border-accent"
+            className={`flex h-full flex-col items-start rounded-3xl bg-mist transition hover:bg-[#E7F6FC] ${compact ? "min-h-[148px] p-5" : "p-5"}`}
           >
-            <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-mist text-accent">
+            <span className="grid size-12 place-items-center rounded-full bg-white text-accent">
               <CategoryIcon id={category.id} />
             </span>
-            <span>
-              <span className="block font-extrabold">{loc(locale, category.name)}</span>
-              <span className="mt-1 block text-sm leading-relaxed text-ink/70">
-                {loc(locale, category.blurb)}
-              </span>
-            </span>
+            <span className="mt-5 text-[17px] font-bold leading-snug">{loc(locale, category.name)}</span>
+            {!compact && (
+              <span className="mt-1 text-sm leading-relaxed text-ink/65">{loc(locale, category.blurb)}</span>
+            )}
           </Link>
         </li>
       ))}

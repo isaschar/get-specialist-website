@@ -45,8 +45,8 @@ export function AppShell({
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
       <div className="border-b border-line bg-paper">
-        <div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3">
-          <span className="me-2 shrink-0 rounded-full bg-mist px-3 py-1 text-xs font-bold uppercase tracking-wide text-sea">
+        <div className="mx-auto flex max-w-[1120px] items-center gap-6 overflow-x-auto px-4 md:px-6">
+          <span className="shrink-0 py-3 text-xs font-semibold uppercase tracking-wide text-ink/45">
             {t("demo")}
           </span>
           {links.map((link) => {
@@ -56,8 +56,8 @@ export function AppShell({
                 key={link.href}
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold ${
-                  active ? "bg-ink text-white" : "bg-mist text-ink hover:border-accent"
+                className={`shrink-0 border-b-2 py-3 text-sm font-semibold ${
+                  active ? "border-accent text-ink" : "border-transparent text-ink/60 hover:text-ink"
                 }`}
               >
                 {link.label}

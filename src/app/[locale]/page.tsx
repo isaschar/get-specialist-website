@@ -1,170 +1,174 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CategoryGrid } from "@/components/category-grid";
+import { CategoryIcon } from "@/components/category-icon";
+import { HeroArt } from "@/components/hero-art";
+import { HeroSearch } from "@/components/hero-search";
 import { MarketingShell } from "@/components/marketing-shell";
 import { RichText } from "@/components/rich-text";
 import { CITIES } from "@/lib/taxonomy";
 import { loc } from "@/lib/locale-text";
-import { btnPrimary, btnSecondary } from "@/lib/ui";
-
-const trustKeys = [
-  "verified",
-  "pricing",
-  "support",
-  "insurance",
-  "intermediary",
-  "emergency",
-] as const;
+import { display, textLink } from "@/lib/ui";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
+  const clients = await getTranslations("clients");
+  const pros = await getTranslations("pros");
   const locale = await getLocale();
-  const headline = t("headline");
-  const splitAt = headline.indexOf(". ");
-  const lead = splitAt > 0 ? headline.slice(0, splitAt + 1) : headline;
-  const rest = splitAt > 0 ? headline.slice(splitAt + 2) : "";
+  const lines = t.raw("headlineLines") as string[];
+
+  const features = [
+    { step: "1", href: "/client/jobs/new" },
+    { step: "2", href: "/dispatch" },
+    { step: "4", href: "/contact" },
+  ] as const;
 
   return (
     <MarketingShell>
-      <section className="bg-mist">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-[1.15fr_0.85fr] md:py-20">
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 py-12 md:grid-cols-[1.08fr_0.92fr] md:gap-8 md:px-8 md:py-16 lg:py-20">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1 text-sm font-semibold text-sea">
-              <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
-              {t("eyebrow")}
-            </p>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-ink md:text-6xl md:leading-[1.05]">
-              <span className="block">{lead}</span>
-              {rest && <span className="mt-1 block text-accent">{rest}</span>}
+            <h1 className={`${display} text-[2.75rem] text-ink sm:text-6xl lg:text-[5.5rem]`}>
+              {lines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink/80">{t("subhead")}</p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Link href="/client/jobs/new" className={btnPrimary}>
-                {t("primaryCta")}
+            <HeroSearch cta={t("primaryCta")} label={t("cityLabel")} />
+            <p className="mt-5 max-w-md text-base leading-relaxed text-ink/70">{t("subhead")}</p>
+            <Link href="/for-pros" className={`${textLink} mt-4`}>
+              {t("secondaryCta")}
+            </Link>
+          </div>
+          <HeroArt />
+        </div>
+      </section>
+
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-[1120px] gap-12 px-5 py-16 md:grid-cols-3 md:gap-10 md:px-8 md:py-24">
+          {features.map((feature) => (
+            <article key={feature.step}>
+              <span className="grid size-16 place-items-center rounded-full bg-[#E7F6FC] text-accent">
+                <FeatureMark index={feature.step} />
+              </span>
+              <h2 className="mt-6 text-[22px] font-bold tracking-[-0.02em]">{t(`steps.${feature.step}.title`)}</h2>
+              <p className="mt-2 max-w-[16rem] text-[15px] leading-relaxed text-ink/65">
+                {t(`steps.${feature.step}.body`)}
+              </p>
+              <Link href={feature.href} className={`${textLink} mt-4`}>
+                {t("learnMore")}
               </Link>
-              <Link href="/for-pros" className={btnSecondary}>
-                {t("secondaryCta")}
-              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 py-8 md:grid-cols-2 md:gap-16 md:px-8 md:py-20">
+          <div>
+            <h2 className={`${display} text-4xl md:text-[3.25rem]`}>{clients("heroTitle")}</h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/70">{clients("heroBody")}</p>
+            <Link href="/for-clients" className={`${textLink} mt-6`}>
+              {t("learnMore")}
+            </Link>
+          </div>
+          <div className="flex min-h-[340px] items-center justify-center rounded-[32px] bg-mist p-8 md:min-h-[420px]">
+            <CategoryStrip />
+          </div>
+        </div>
+      </section>
+
+      <section id="categories" className="bg-paper">
+        <div className="mx-auto max-w-[1120px] px-5 py-14 md:px-8 md:py-20">
+          <h2 className={`${display} max-w-xl text-4xl md:text-[3.25rem]`}>{t("categoriesTitle")}</h2>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink/70">{t("categoriesLead")}</p>
+          <div className="mt-10">
+            <CategoryGrid locale={locale} compact />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 py-8 md:grid-cols-2 md:gap-16 md:px-8 md:py-20">
+          <div className="order-2 md:order-1">
+            <div className="flex min-h-[340px] flex-col justify-end rounded-[32px] bg-[#E7F6FC] p-8 md:min-h-[420px] md:p-10">
+              <p className="text-sm font-semibold text-ink/60">{t("citiesTitle")}</p>
+              <ul className="mt-4 grid gap-2">
+                {CITIES.map((city) => (
+                  <li key={city.id}>
+                    <Link
+                      href={`/client/jobs/new?city=${city.id}`}
+                      className={`${display} text-3xl hover:text-accent md:text-[2.6rem]`}
+                    >
+                      {loc(locale, city.name)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <HeroCard />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">{t("howTitle")}</h2>
-        <ol className="mt-6 grid gap-4 md:grid-cols-2">
-          {["1", "2", "3", "4"].map((step, index) => (
-            <li key={step} className="rounded-3xl border border-line bg-paper p-5">
-              <span className="grid size-9 place-items-center rounded-full bg-[#E6F7FD] text-sm font-extrabold text-sea">
-                {index + 1}
-              </span>
-              <h3 className="mt-3 text-lg font-extrabold">{t(`steps.${step}.title`)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink/75">{t(`steps.${step}.body`)}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section id="categories" className="bg-mist">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">{t("categoriesTitle")}</h2>
-          <p className="mt-2 max-w-2xl text-ink/75">{t("categoriesLead")}</p>
-          <div className="mt-6">
-            <CategoryGrid locale={locale} />
+          <div className="order-1 md:order-2">
+            <h2 className={`${display} text-4xl md:text-[3.25rem]`}>{pros("heroTitle")}</h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/70">{pros("heroBody")}</p>
+            <Link href="/for-pros" className={`${textLink} mt-6`}>
+              {t("learnMore")}
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">{t("trustTitle")}</h2>
-        <ul className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {trustKeys.map((key) => (
-            <li key={key} className="rounded-3xl border border-line p-5">
-              <h3 className="font-extrabold">
+      <section className="bg-paper">
+        <ul className="mx-auto grid max-w-[1120px] gap-10 px-5 py-16 md:grid-cols-3 md:px-8 md:py-20">
+          {(["verified", "pricing", "insurance"] as const).map((key) => (
+            <li key={key}>
+              <h2 className="text-lg font-bold">
                 <RichText text={t(`trust.${key}.title`)} />
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink/75">
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink/70">
                 <RichText text={t(`trust.${key}.body`)} />
               </p>
             </li>
           ))}
         </ul>
       </section>
-
-      <section className="border-y border-line bg-paper">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-extrabold tracking-tight">{t("citiesTitle")}</h2>
-          <p className="mt-2 max-w-2xl text-ink/75">{t("citiesLead")}</p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-3">
-            {CITIES.map((city) => (
-              <li key={city.id} className="rounded-3xl bg-mist px-5 py-6 text-xl font-extrabold">
-                {loc(locale, city.name)}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16 text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight">{t("finalTitle")}</h2>
-        <p className="mx-auto mt-3 max-w-xl text-lg text-ink/75">{t("finalBody")}</p>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link href="/client/jobs/new" className={btnPrimary}>
-            {t("primaryCta")}
-          </Link>
-          <Link href="/for-pros" className={btnSecondary}>
-            {t("secondaryCta")}
-          </Link>
-        </div>
-      </section>
     </MarketingShell>
   );
 }
 
-function HeroCard() {
+function FeatureMark({ index }: { index: string }) {
+  if (index === "1") {
+    return (
+      <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M5 6h14M5 12h10M5 18h7" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (index === "2") {
+    return (
+      <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <circle cx="12" cy="12" r="7" />
+        <path d="M12 8v4l3 2" strokeLinecap="round" />
+      </svg>
+    );
+  }
   return (
-    <div className="rounded-[28px] border border-line bg-paper p-5 shadow-[0_16px_50px_rgba(20,20,20,0.06)]">
-      <div className="flex items-center justify-between">
-        <span className="rounded-full bg-[#E6F7FD] px-3 py-1 text-xs font-bold text-sea">
-          <HeroLabel />
-        </span>
-        <span className="text-xs font-semibold text-ink/50">09:40</span>
-      </div>
-      <p className="mt-5 text-2xl font-extrabold leading-snug">
-        <HeroTitle />
-      </p>
-      <div className="mt-5 grid grid-cols-4 gap-2">
-        <span className="h-1.5 rounded-full bg-accent" />
-        <span className="h-1.5 rounded-full bg-accent" />
-        <span className="h-1.5 rounded-full bg-accent" />
-        <span className="h-1.5 rounded-full bg-line" />
-      </div>
-      <div className="mt-5 rounded-2xl bg-mist p-4">
-        <p className="text-sm font-bold">
-          <HeroPro />
-        </p>
-        <p className="mt-1 text-sm text-ink/70">
-          <HeroCity />
-        </p>
-      </div>
-    </div>
+    <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M8 10a4 4 0 1 1 8 0c0 3-4 4-4 7" strokeLinecap="round" />
+      <path d="M12 20h.01" strokeLinecap="round" />
+    </svg>
   );
 }
 
-async function HeroLabel() {
-  const t = await getTranslations("home");
-  return t("cardStatus");
-}
-async function HeroTitle() {
-  const t = await getTranslations("home");
-  return t("cardTitle");
-}
-async function HeroPro() {
-  const t = await getTranslations("home");
-  return t("cardPro");
-}
-async function HeroCity() {
-  const t = await getTranslations("home");
-  return t("cardCity");
+function CategoryStrip() {
+  const ids = ["plumbing", "electricity", "hvac", "locksmith", "cleaning", "handyman"] as const;
+  return (
+    <div className="grid w-full max-w-md grid-cols-3 gap-4">
+      {ids.map((id) => (
+        <div key={id} className="grid aspect-square place-items-center rounded-3xl bg-white text-accent shadow-[0_8px_24px_rgba(20,20,20,0.04)]">
+          <CategoryIcon id={id} className="size-10" />
+        </div>
+      ))}
+    </div>
+  );
 }

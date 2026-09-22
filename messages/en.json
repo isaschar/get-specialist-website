@@ -18,7 +18,8 @@
     "close": "Close menu",
     "primary": "Primary",
     "dispatch": "Dispatch",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "getSpecialist": "Get a specialist"
   },
   "lang": {
     "button": "עברית",
@@ -28,11 +29,20 @@
     "blurb": "Get Specialist connects households in Israel with independent home pros. We are the marketplace — not the tradesperson.",
     "emergency": "Not 100 / 101 / 102 — for emergencies, call Israeli emergency services.",
     "draft": "Privacy and Terms are drafts for product scaffolding, not legal advice. Replace [COMPANY_LEGAL_NAME] and the other placeholders before any public launch.",
-    "rights": "Get Specialist · מגיע מומחה"
+    "rights": "Get Specialist · מגיע מומחה",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "cities": "Cities",
+    "categories": "Categories",
+    "telAviv": "Tel Aviv-Yafo",
+    "jerusalem": "Jerusalem",
+    "haifa": "Haifa"
   },
   "home": {
     "eyebrow": "Home services across Israel",
     "headline": "The right specialist. At your door.",
+    "headlineLines": ["The right", "specialist.", "At your door."],
     "subhead": "Book trusted home pros across Israel — plumbing, electricity, cleaning, and more. Clear steps, local help, less hassle.",
     "primaryCta": "Get a specialist",
     "secondaryCta": "Join as a pro",
@@ -91,7 +101,9 @@
     "cardStatus": "In progress",
     "cardTitle": "Kitchen sink leak under cabinet",
     "cardPro": "Avi K. is on site",
-    "cardCity": "Tel Aviv-Yafo · Plumbing"
+    "cardCity": "Tel Aviv-Yafo · Plumbing",
+    "learnMore": "Learn more",
+    "cityLabel": "City"
   },
   "clients": {
     "metaTitle": "For clients",

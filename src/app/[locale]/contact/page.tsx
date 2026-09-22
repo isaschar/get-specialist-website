@@ -17,9 +17,9 @@ export default async function ContactPage() {
   const t = await getTranslations("contact");
   return (
     <MarketingShell>
-      <section className="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-2">
+      <section className="mx-auto grid max-w-[1120px] gap-10 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight">{t("heroTitle")}</h1>
+          <h1 className="text-[2.6rem] font-bold leading-[0.98] tracking-[-0.035em] md:text-6xl">{t("heroTitle")}</h1>
           <p className="mt-4 text-lg leading-relaxed text-ink/80">{t("heroBody")}</p>
         </div>
         <ContactForm />

@@ -23,9 +23,9 @@ export default async function ForProsPage() {
 
   return (
     <MarketingShell>
-      <section className="bg-mist">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:py-20">
-          <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl">
+      <section className="bg-paper">
+        <div className="mx-auto max-w-[1120px] px-4 py-16 md:px-6 md:py-24">
+          <h1 className="max-w-3xl text-[2.6rem] font-bold leading-[0.98] tracking-[-0.035em] md:text-6xl">
             {t("heroTitle")}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/80">{t("heroBody")}</p>
