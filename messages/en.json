@@ -19,7 +19,10 @@
     "primary": "Primary",
     "dispatch": "Dispatch",
     "skip": "Skip to content",
-    "getSpecialist": "Get a specialist"
+    "getSpecialist": "Get a specialist",
+    "how": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ"
   },
   "lang": {
     "button": "עברית",
@@ -35,6 +38,7 @@
     "company": "Company",
     "legal": "Legal",
     "cities": "Cities",
+    "cookies": "Cookies",
     "categories": "Categories",
     "telAviv": "Tel Aviv-Yafo",
     "jerusalem": "Jerusalem",
@@ -223,7 +227,12 @@
     "errors": {
       "category": "Choose a category.",
       "details": "Add a title (4+ characters) and a description (10+ characters).",
+      "title": "Add a title of at least 4 characters.",
+      "description": "Add a description of at least 10 characters.",
       "place": "Choose a city, an address, and a time window.",
+      "city": "Choose a city.",
+      "address": "Add an address.",
+      "time": "Choose a time window.",
       "ack": "Confirm this is not an emergency before posting.",
       "session": "Log in as a client to post a request."
     },
@@ -241,7 +250,8 @@
     "ack": "I understand Get Specialist is not emergency services. For life-threatening or urgent emergencies I will call 100 / 101 / 102.",
     "back": "Back",
     "next": "Continue",
-    "submit": "Post request"
+    "submit": "Post request",
+    "stepOf": "Step {current} of {total}"
   },
   "app": {
     "demo": "Demo",
@@ -379,5 +389,117 @@
       "cancelled": "Cancelled",
       "disputed": "Disputed"
     }
+  },
+  "demoChip": {
+    "label": "DEMO",
+    "client": "Client",
+    "pro": "Pro",
+    "dispatch": "Dispatch"
+  },
+  "flash": {
+    "posted": "Request posted. Matching has started.",
+    "cancelled": "Request cancelled.",
+    "rated": "Rating saved. The job is closed.",
+    "wrongRole": "That area is for a different demo role. You were sent back.",
+    "dismiss": "Dismiss",
+    "err_not_found": "That job is no longer in this browser.",
+    "err_offline": "Go available before claiming a job.",
+    "err_not_claimable": "This job is no longer open.",
+    "err_not_owner": "This action belongs to the assigned person.",
+    "err_bad_transition": "That status change is not available now.",
+    "err_not_client": "Log in as the client to do that.",
+    "err_not_pro": "Log in as a pro to do that.",
+    "err_session": "Log in as a client to post a request."
+  },
+  "overlay": {
+    "close": "Close",
+    "cancelTitle": "Cancel this request?",
+    "cancelBody": "The job leaves the open board. This demo does not send a message or a refund.",
+    "cancelConfirm": "Cancel request",
+    "cancelKeep": "Keep request",
+    "releaseTitle": "Release this job?",
+    "releaseBody": "It returns to matching and drops off your assignments.",
+    "releaseConfirm": "Release job",
+    "releaseKeep": "Keep it",
+    "offerTitle": "Take this job?",
+    "offerBody": "Confirming assigns it to you in this demo. Nothing is paid out.",
+    "offerConfirm": "Confirm and claim",
+    "offerBack": "Not now",
+    "resetTitle": "Reset demo data?",
+    "resetBody": "Replace everything in this browser with the original three sample jobs?",
+    "resetConfirm": "Reset",
+    "resetKeep": "Keep my data"
+  },
+  "cookie": {
+    "body": "This demo keeps a session in this browser only. It does not set tracking cookies.",
+    "accept": "Accept essential",
+    "manage": "Cookie note"
+  },
+  "pricingPage": {
+    "title": "Pricing",
+    "meta": "Pricing",
+    "oneLiner": "We’re not charging in this demo — the live fee model is still TBD.",
+    "escrow": "Demo stub — not real escrow, not a bank, and “Verified” means product-defined checks only (not a government license).",
+    "more": "Questions"
+  },
+  "faqPage": {
+    "title": "FAQ",
+    "meta": "FAQ",
+    "lead": "Titles are fixed for this demo. Where an answer is still open, it stays TBD — nothing here invents a fee, an email, or a company number.",
+    "tbd": "TBD",
+    "support": "Write to [SUPPORT_EMAIL]. This demo does not publish another address.",
+    "legal": "The Privacy Policy and Terms on this site are drafts, not final documents.",
+    "items": [
+      { "q": "Is Get Specialist available in my city?" },
+      { "q": "Are specialists employees of Get Specialist?" },
+      { "q": "Do you handle emergencies?" },
+      { "q": "How does pro verification work?" },
+      { "q": "How do payments and pricing work?" },
+      { "q": "How do I join as a professional?" },
+      { "q": "Can I use the site in Hebrew and English?" },
+      { "q": "Does the platform provide insurance?" },
+      { "q": "How do I contact support?" },
+      { "q": "Are the Privacy Policy and Terms final?" }
+    ]
+  },
+  "howPage": {
+    "title": "How it works",
+    "meta": "How it works",
+    "lead": "Four steps in this demo. Nothing here is live dispatch."
+  },
+  "earn": {
+    "demoOnly": "Demo only · not a real payout"
+  },
+  "proHome": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "available": "Available",
+    "unavailable": "Not available",
+    "openNear": "Open near you",
+    "needsAction": "Needs action",
+    "doneDemo": "Closed in this demo",
+    "inbox": "Needs action",
+    "inboxEmpty": "Nothing waiting on you.",
+    "nearby": "New near you",
+    "nearbyEmpty": "No open jobs in your cities.",
+    "review": "Review offer",
+    "open": "Open",
+    "nearbyTab": "Nearby",
+    "active": "Active",
+    "done": "Done",
+    "earningsTitle": "Earnings",
+    "earningsBody": "No amounts are shown. This demo does not invent a fee or a payout.",
+    "earningsCount": "{count} jobs marked done on this profile",
+    "tabsHome": "Home",
+    "tabsJobs": "Jobs",
+    "tabsAssignments": "Assignments",
+    "tabsEarnings": "Earnings",
+    "tabsProfile": "Profile",
+    "overflow": "Later",
+    "calendar": "Calendar",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "overflowBody": "Not in this demo."
   }
 }

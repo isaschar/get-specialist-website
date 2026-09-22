@@ -8,6 +8,8 @@
   --color-accent: #009de0;
   --color-glow: #00c2e8;
   --color-sea: #085e80;
+  --color-danger: #b42318;
+  --color-danger-soft: #fee4e2;
   --font-sans: var(--font-arimo), system-ui, Roboto, "Segoe UI", "Open Sans", sans-serif;
 }
 

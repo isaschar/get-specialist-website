@@ -14,6 +14,9 @@ import type { CityId } from "@/lib/types";
 
 const links = [
   { href: "/for-clients", key: "clients" },
+  { href: "/how-it-works", key: "how" },
+  { href: "/pricing", key: "pricing" },
+  { href: "/faq", key: "faq" },
   { href: "/for-pros", key: "pros" },
 ] as const;
 
@@ -25,7 +28,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const session = ready ? state.session : null;
   const person = personById(session?.userId);
-  const appHref = session?.role === "pro" ? "/pro/jobs" : "/client/jobs";
+  const appHref = session?.role === "pro" ? "/pro" : "/client/jobs";
 
   return (
     <header className="sticky top-0 z-40 bg-paper">
@@ -34,10 +37,11 @@ export function SiteHeader() {
           <Link href="/" aria-label={t("home")} onClick={() => setOpen(false)}>
             <Logo compact />
           </Link>
+          <DemoChip />
           <HeaderCity />
         </div>
         <div className="flex items-center gap-1 sm:gap-3">
-          <nav className="hidden items-center gap-6 lg:flex" aria-label={t("primary")}>
+          <nav className="hidden items-center gap-4 lg:flex" aria-label={t("primary")}>
             {links.map((link) => {
               const active = pathname === link.href;
               return (
@@ -45,7 +49,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`text-[15px] font-medium ${active ? "text-ink" : "text-ink/80 hover:text-ink"}`}
+                  className={`text-[14px] font-medium ${active ? "text-ink" : "text-ink/80 hover:text-ink"}`}
                 >
                   {t(link.key)}
                 </Link>
@@ -137,6 +141,26 @@ export function SiteHeader() {
         </nav>
       )}
     </header>
+  );
+}
+
+function DemoChip() {
+  const pathname = usePathname();
+  const t = useTranslations("demoChip");
+  const { state } = useDemo();
+  const surface = pathname.startsWith("/client")
+    ? "client"
+    : pathname.startsWith("/pro")
+      ? "pro"
+      : pathname.startsWith("/dispatch")
+        ? "dispatch"
+        : state.session?.role ?? null;
+
+  return (
+    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-line bg-mist px-2.5 py-1 text-[11px] font-bold tracking-wide text-ink">
+      <span>{t("label")}</span>
+      {surface && <span className="font-semibold">· {t(surface)}</span>}
+    </span>
   );
 }
 

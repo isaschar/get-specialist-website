@@ -9,9 +9,11 @@ import { canClientCancel, proAction } from "@/lib/jobs";
 import { personById } from "@/lib/people";
 import { categoryById, cityById, emphasizesEmergency, lifecycleOf } from "@/lib/taxonomy";
 import type { Role } from "@/lib/types";
-import { btnPrimary, btnSecondary, cardClass, fieldClass } from "@/lib/ui";
+import { setFlash } from "@/lib/flash";
+import { btnDanger, btnPrimary, btnSecondary, cardClass, fieldClass } from "@/lib/ui";
 import { CategoryIcon } from "./category-icon";
 import { EmergencyBanner } from "./emergency-banner";
+import { Overlay } from "./overlay";
 import { Pipeline } from "./pipeline";
 import { StatusBadge } from "./status-badge";
 import { useDemo } from "./demo-provider";
@@ -23,11 +25,17 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
   const payoutT = useTranslations("payout");
   const timeT = useTranslations("time");
   const params = useSearchParams();
+  const overlay = useTranslations("overlay");
+  const earn = useTranslations("earn");
   const { state, claimJob, advanceJob, releaseJob, cancelJob, rateJob } = useDemo();
   const job = state.jobs.find((item) => item.id === id);
   const [error, setError] = useState<string | null>(null);
   const [score, setScore] = useState(5);
   const [comment, setComment] = useState("");
+  const [cancelOpen, setCancelOpen] = useState(false);
+  const [releaseOpen, setReleaseOpen] = useState(false);
+  const [offerForce, setOfferForce] = useState(false);
+  const [offerDismissed, setOfferDismissed] = useState(false);
 
   if (!job) {
     return (
@@ -54,8 +62,6 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
   const other = otherLocale(locale);
   const showOther = job.title[locale === "he" ? "he" : "en"] !== job.title[other] ||
     job.description[locale === "he" ? "he" : "en"] !== job.description[other];
-  const created = params.get("new") === "1";
-
   function run(result: string | null) {
     setError(result ? t(`errors.${result}`) : null);
   }
@@ -64,15 +70,10 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
     <div className="grid gap-4">
       <Link
         href={audience === "pro" ? (job.proId === session?.userId ? "/pro/assignments" : "/pro/jobs") : "/client/jobs"}
-        className="text-sm font-bold text-sea"
+        className="text-sm font-bold text-ink underline"
       >
         {t("backToList")}
       </Link>
-      {created && (
-        <p className="rounded-2xl bg-[#E6F7FD] px-4 py-3 text-sm font-semibold text-sea">
-          {t("posted")}
-        </p>
-      )}
       <section className={cardClass}>
         <div className="flex items-start gap-3">
           <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-mist text-accent">
@@ -133,26 +134,22 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
         {error && <p className="mt-3 text-sm font-semibold text-[#8A4B08]">{error}</p>}
         <div className="mt-4 flex flex-col gap-3">
           {audience === "pro" && !job.proId && (
-            <button
-              type="button"
-              className={btnPrimary}
-              onClick={() => run(claimJob(job.id))}
-            >
+            <button type="button" className={btnPrimary + " min-h-11"} onClick={() => setOfferForce(true)}>
               {t("claim")}
             </button>
           )}
           {audience === "pro" && mine && action && (
-            <button type="button" className={btnPrimary} onClick={() => run(advanceJob(job.id))}>
+            <button type="button" className={btnPrimary + " min-h-11"} onClick={() => run(advanceJob(job.id))}>
               {t(`action.${action}`)}
             </button>
           )}
           {audience === "pro" && mine && (job.status === "ACCEPTED" || job.status === "CONFIRMED" || job.status === "EN_ROUTE") && (
-            <button type="button" className={btnSecondary} onClick={() => run(releaseJob(job.id))}>
+            <button type="button" className={btnSecondary + " min-h-11"} onClick={() => setReleaseOpen(true)}>
               {t("release")}
             </button>
           )}
           {audience === "client" && mine && canClientCancel(job) && (
-            <button type="button" className={btnSecondary} onClick={() => run(cancelJob(job.id))}>
+            <button type="button" className={btnSecondary + " min-h-11"} onClick={() => setCancelOpen(true)}>
               {t("cancel")}
             </button>
           )}
@@ -162,7 +159,10 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
               onSubmit={(event) => {
                 event.preventDefault();
                 const text = comment.trim();
-                run(rateJob(job.id, score, { en: text, he: text }));
+                const result = rateJob(job.id, score, { en: text, he: text });
+                if (result) setFlash(`err_${result}`);
+                else setFlash("rated");
+                run(result);
               }}
             >
               <p className="text-sm text-ink/75">{t("rateHelp")}</p>
@@ -174,8 +174,8 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
                     role="radio"
                     aria-checked={score === value}
                     onClick={() => setScore(value)}
-                    className={`grid size-11 place-items-center rounded-full border text-sm font-extrabold ${
-                      score === value ? "border-accent bg-[#E6F7FD] text-sea" : "border-line"
+                    className={`grid size-11 place-items-center rounded-full border text-sm font-bold ${
+                      score === value ? "border-ink bg-mist text-ink" : "border-line"
                     }`}
                   >
                     {value}
@@ -222,7 +222,8 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
         <div className={cardClass}>
           <h2 className="font-extrabold">{t("payoutTitle")}</h2>
           <p className="mt-2 text-sm leading-relaxed text-ink/75">{t("payoutBody")}</p>
-          <p className="mt-2 text-sm font-bold">{payoutT(job.payoutStatus)}</p>
+          <p className="mt-2 text-sm font-bold text-ink">{earn("demoOnly")}</p>
+          <p className="mt-2 text-sm font-semibold">{payoutT(job.payoutStatus)}</p>
         </div>
       </section>
 
@@ -242,6 +243,75 @@ export function JobDetail({ id, audience }: { id: string; audience: Role }) {
           ))}
         </ol>
       </section>
+      {(offerForce || (!offerDismissed && params.get("offer") === "1")) && audience === "pro" && !job.proId && (
+        <Overlay title={overlay("offerTitle")} onClose={() => { setOfferForce(false); setOfferDismissed(true); }}>
+          <p className="mt-3 text-sm leading-relaxed text-ink/75">{overlay("offerBody")}</p>
+          <p className="mt-3 text-sm font-semibold">{loc(locale, job.title)}</p>
+          <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+            <button type="button" className={btnSecondary + " min-h-11"} onClick={() => { setOfferForce(false); setOfferDismissed(true); }}>
+              {overlay("offerBack")}
+            </button>
+            <button
+              type="button"
+              className={btnPrimary + " min-h-11"}
+              onClick={() => {
+                const result = claimJob(job.id);
+                if (result) setFlash(`err_${result}`);
+                run(result);
+                setOfferForce(false);
+                setOfferDismissed(true);
+              }}
+            >
+              {overlay("offerConfirm")}
+            </button>
+          </div>
+        </Overlay>
+      )}
+      {cancelOpen && (
+        <Overlay title={overlay("cancelTitle")} onClose={() => setCancelOpen(false)} initial="last">
+          <p className="mt-3 text-sm leading-relaxed text-ink/75">{overlay("cancelBody")}</p>
+          <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+            <button type="button" className={btnSecondary + " min-h-11"} onClick={() => setCancelOpen(false)}>
+              {overlay("cancelKeep")}
+            </button>
+            <button
+              type="button"
+              className={btnDanger + " min-h-11"}
+              onClick={() => {
+                const result = cancelJob(job.id);
+                if (result) setFlash(`err_${result}`);
+                else setFlash("cancelled");
+                run(result);
+                setCancelOpen(false);
+              }}
+            >
+              {overlay("cancelConfirm")}
+            </button>
+          </div>
+        </Overlay>
+      )}
+      {releaseOpen && (
+        <Overlay title={overlay("releaseTitle")} onClose={() => setReleaseOpen(false)} initial="last">
+          <p className="mt-3 text-sm leading-relaxed text-ink/75">{overlay("releaseBody")}</p>
+          <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+            <button type="button" className={btnSecondary + " min-h-11"} onClick={() => setReleaseOpen(false)}>
+              {overlay("releaseKeep")}
+            </button>
+            <button
+              type="button"
+              className={btnDanger + " min-h-11"}
+              onClick={() => {
+                const result = releaseJob(job.id);
+                if (result) setFlash(`err_${result}`);
+                run(result);
+                setReleaseOpen(false);
+              }}
+            >
+              {overlay("releaseConfirm")}
+            </button>
+          </div>
+        </Overlay>
+      )}
     </div>
   );
 }

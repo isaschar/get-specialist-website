@@ -8,6 +8,7 @@ import { loc } from "@/lib/locale-text";
 import { peopleByRole } from "@/lib/people";
 import { categoryById, cityById } from "@/lib/taxonomy";
 import { cardClass } from "@/lib/ui";
+import { ResetDemoDialog } from "./reset-demo-dialog";
 import { useDemo } from "./demo-provider";
 
 export function LoginPanel() {
@@ -15,7 +16,7 @@ export function LoginPanel() {
   const locale = useLocale();
   const router = useRouter();
   const params = useSearchParams();
-  const { login, reset } = useDemo();
+  const { login } = useDemo();
   const [confirmReset, setConfirmReset] = useState(false);
 
   function enter(role: "client" | "pro", userId: string) {
@@ -26,13 +27,13 @@ export function LoginPanel() {
       router.push(safe);
       return;
     }
-    router.push(role === "pro" ? "/pro/jobs" : "/client/jobs");
+    router.push(role === "pro" ? "/pro" : "/client/jobs");
   }
 
   return (
     <div className="mx-auto grid max-w-5xl gap-6 px-4 py-10">
       <div className="max-w-2xl">
-        <p className="text-sm font-bold text-sea">{t("eyebrow")}</p>
+        <p className="text-sm font-bold text-ink/50">{t("eyebrow")}</p>
         <h1 className="mt-2 text-4xl font-bold tracking-[-0.035em] md:text-6xl">{t("title")}</h1>
         <p className="mt-3 text-lg leading-relaxed text-ink/75">{t("body")}</p>
       </div>
@@ -54,29 +55,11 @@ export function LoginPanel() {
         />
       </div>
       <div className="flex flex-wrap items-center gap-3">
-        {confirmReset ? (
-          <>
-            <p className="text-sm font-semibold">{t("resetConfirm")}</p>
-            <button
-              type="button"
-              className="rounded-full bg-ink px-4 py-2 text-sm font-bold text-white"
-              onClick={() => {
-                reset();
-                setConfirmReset(false);
-              }}
-            >
-              {t("resetYes")}
-            </button>
-            <button type="button" className="text-sm font-bold text-sea" onClick={() => setConfirmReset(false)}>
-              {t("resetNo")}
-            </button>
-          </>
-        ) : (
-          <button type="button" className="text-sm font-bold text-sea" onClick={() => setConfirmReset(true)}>
-            {t("reset")}
-          </button>
-        )}
+        <button type="button" className="min-h-11 text-sm font-bold text-ink underline" onClick={() => setConfirmReset(true)}>
+          {t("reset")}
+        </button>
       </div>
+      {confirmReset && <ResetDemoDialog onClose={() => setConfirmReset(false)} />}
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { applyPlaceholders } from "@/lib/placeholders";
+import { openCookieNote } from "./cookie-banner";
 import { Logo } from "./logo";
 
 export function SiteFooter() {
@@ -72,6 +73,13 @@ export function SiteFooter() {
                     </Link>
                   </li>
                 ))}
+                {column.title === t("legal") && (
+                  <li>
+                    <button type="button" className="text-sm text-white/60 hover:text-white" onClick={openCookieNote}>
+                      {t("cookies")}
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

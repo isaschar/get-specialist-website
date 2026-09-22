@@ -58,6 +58,23 @@ function subscribe(listener: () => void) {
   return () => listeners.delete(listener);
 }
 
+function ensureStorageSync() {
+  if (typeof window === "undefined") return;
+  const flag = globalThis as { __gsStorage?: boolean };
+  if (flag.__gsStorage) return;
+  flag.__gsStorage = true;
+  window.addEventListener("storage", (event) => {
+    if (event.key !== STORAGE_KEY || !event.newValue) return;
+    try {
+      memory = normalizeDemoState(JSON.parse(event.newValue));
+      listeners.forEach((listener) => listener());
+    } catch {
+      memory = initialDemoState();
+      listeners.forEach((listener) => listener());
+    }
+  });
+}
+
 function updateJob(
   state: DemoState,
   jobId: string,
@@ -73,6 +90,7 @@ function updateJob(
 }
 
 export function DemoProvider({ children }: { children: React.ReactNode }) {
+  ensureStorageSync();
   const state = useSyncExternalStore(subscribe, readClient, () => serverState);
   const ready = useSyncExternalStore(
     subscribe,

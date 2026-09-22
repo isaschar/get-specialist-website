@@ -20,11 +20,15 @@ npm start
 
 ## What you can click through
 
-- **Language** — the header button switches the whole interface between עברית and English, including right-to-left layout.
-- **Client demo** — Log in → Maya R., Yonatan S., or Noa L. Post a request from **New request**. It enters matching (`pending`).
-- **Pro demo** — Log in → Avi K. or David M. **Available jobs** lists open requests (the Haifa AC job starts unassigned). **Claim this job** assigns it. Then mark on the way, start work, and complete. The client rates it to close the job.
+- **Language** — the footer shows EN / עברית and switches the whole interface, including right-to-left layout. Routes stay `/en` and `/he`.
+- **DEMO chip** — the header keeps a DEMO label. On the client app, pro app, and dispatch board it also names the role.
+- **Client demo** — Log in → Maya R., Yonatan S., or Noa L. Post a request from **New request**. A session flash (not a toast) confirms it. Cancel asks in a dialog before the job leaves the board.
+- **Pro demo** — Log in → Avi K. or David M. lands on `/pro` (availability, needs-action, nearby jobs). Claiming asks for confirmation. Earnings stay a stub: “Demo only · not a real payout”.
+- **Pricing and FAQ** — `/pricing` and `/faq` in both languages. The fee line is the TBD one-liner only. No amounts are invented.
 - **Dispatch** — `/dispatch` groups every demo job as pending → assigned → in progress → completed.
-- **Reset** — Log in page → “Reset demo data” restores the three sample jobs (Tel Aviv-Yafo, Haifa, Jerusalem).
+- **Reset** — Log in page → “Reset demo data” opens a confirm dialog and restores the three sample jobs (Tel Aviv-Yafo, Haifa, Jerusalem).
+
+A new deploy is the same Next.js app: `npm run build` then `npm start`, or the existing host’s production build. No new environment variables. Demo state stays in the browser (`localStorage` plus a `gs.flash` session note).
 
 Sample people use reserved demo phone numbers (`050-000-…`). They are not real customers.
 
