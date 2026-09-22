@@ -1,22 +1,23 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { applyPlaceholders } from "@/lib/placeholders";
 import { Logo } from "./logo";
 
 export function SiteFooter() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
+  const pathname = usePathname();
+  const locale = useLocale();
 
   const columns = [
     {
-      title: t("product"),
+      title: t("partners"),
       links: [
         { href: "/for-clients", label: nav("clients") },
         { href: "/for-pros", label: nav("pros") },
-        { href: "/#categories", label: t("categories") },
-        { href: "/dispatch", label: nav("dispatch") },
+        { href: "/login", label: nav("login") },
       ],
     },
     {
@@ -24,7 +25,15 @@ export function SiteFooter() {
       links: [
         { href: "/about", label: nav("about") },
         { href: "/contact", label: nav("contact") },
-        { href: "/login", label: nav("login") },
+        { href: "/dispatch", label: nav("dispatch") },
+      ],
+    },
+    {
+      title: t("product"),
+      links: [
+        { href: "/#categories", label: t("categories") },
+        { href: "/client/jobs/new", label: nav("getSpecialist") },
+        { href: "/for-pros", label: nav("pros") },
       ],
     },
     {
@@ -45,20 +54,20 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="mt-auto border-t border-line bg-paper">
-      <div className="mx-auto grid max-w-[1120px] gap-12 px-4 py-16 md:grid-cols-[1.1fr_2.2fr] md:px-6 md:py-20">
+    <footer className="mt-auto bg-ink text-white">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-5 py-14 md:grid-cols-[0.8fr_2.2fr] md:px-8 md:py-16">
         <div>
-          <Logo />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/70">{t("blurb")}</p>
+          <Logo tone="light" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">{t("blurb")}</p>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {columns.map((column) => (
             <div key={column.title}>
-              <h2 className="text-[15px] font-bold text-ink">{column.title}</h2>
-              <ul className="mt-5 grid gap-3.5">
+              <h2 className="text-[15px] font-bold text-white">{column.title}</h2>
+              <ul className="mt-4 grid gap-3">
                 {column.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-ink/60 hover:text-ink">
+                  <li key={link.href + link.label}>
+                    <Link href={link.href} className="text-sm text-white/60 hover:text-white">
                       {link.label}
                     </Link>
                   </li>
@@ -68,13 +77,34 @@ export function SiteFooter() {
           ))}
         </div>
       </div>
-      <div className="border-t border-line">
-        <div className="mx-auto flex max-w-[1120px] flex-col gap-3 px-4 py-5 text-xs leading-relaxed text-ink/60 md:px-6">
-          <p className="font-semibold text-ink/80">{t("emergency")}</p>
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-5 py-5 text-xs leading-relaxed text-white/55 md:px-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="flex items-center gap-2 text-sm">
+              <Link
+                href={pathname}
+                locale="en"
+                hrefLang="en"
+                className={locale === "en" ? "font-semibold text-white" : "text-white/55 hover:text-white"}
+              >
+                EN
+              </Link>
+              <span aria-hidden="true" className="text-white/30">
+                /
+              </span>
+              <Link
+                href={pathname}
+                locale="he"
+                hrefLang="he"
+                className={locale === "he" ? "font-semibold text-white" : "text-white/55 hover:text-white"}
+              >
+                עברית
+              </Link>
+            </p>
             <p>{t("rights")}</p>
-            <p className="max-w-xl">{applyPlaceholders(t("draft"))}</p>
           </div>
+          <p className="font-semibold text-white/80">{t("emergency")}</p>
+          <p className="max-w-3xl">{applyPlaceholders(t("draft"))}</p>
         </div>
       </div>
     </footer>

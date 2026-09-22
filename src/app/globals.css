@@ -8,7 +8,7 @@
   --color-accent: #009de0;
   --color-glow: #00c2e8;
   --color-sea: #085e80;
-  --font-sans: var(--font-rubik), "Segoe UI", sans-serif;
+  --font-sans: var(--font-arimo), system-ui, Roboto, "Segoe UI", "Open Sans", sans-serif;
 }
 
 html {

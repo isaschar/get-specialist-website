@@ -14,7 +14,7 @@ export function HeroSearch({ cta, label }: { cta: string; label: string }) {
 
   return (
     <form
-      className="mt-8 flex w-full max-w-[560px] items-center rounded-full border border-[#E6EAEE] bg-white p-1.5 ps-4 shadow-[0_8px_30px_rgba(20,20,20,0.08)]"
+      className="mt-8 flex w-full max-w-[560px] items-center rounded-full bg-white p-1.5 ps-4 text-ink shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
       onSubmit={(event) => {
         event.preventDefault();
         router.push(`/client/jobs/new?city=${city}`);
@@ -23,7 +23,7 @@ export function HeroSearch({ cta, label }: { cta: string; label: string }) {
       <label className="sr-only" htmlFor="hero-city">
         {label}
       </label>
-      <svg viewBox="0 0 24 24" className="size-5 shrink-0 text-ink" aria-hidden="true">
+      <svg viewBox="0 0 24 24" className="size-5 shrink-0 text-ink/70" aria-hidden="true">
         <path
           fill="currentColor"
           d="M12 2.5a6.5 6.5 0 0 0-6.5 6.5c0 4.7 6.5 12.5 6.5 12.5s6.5-7.8 6.5-12.5A6.5 6.5 0 0 0 12 2.5Zm0 8.8a2.3 2.3 0 1 1 0-4.6 2.3 2.3 0 0 1 0 4.6Z"
@@ -43,9 +43,13 @@ export function HeroSearch({ cta, label }: { cta: string; label: string }) {
       </select>
       <button
         type="submit"
-        className="shrink-0 rounded-full bg-accent px-5 py-3 text-[15px] font-semibold text-white hover:brightness-110"
+        aria-label={cta}
+        className="grid size-11 shrink-0 place-items-center rounded-full bg-[#E7F6FC] text-accent hover:bg-white"
       >
-        {cta}
+        <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
+          <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
+          <path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        </svg>
       </button>
     </form>
   );

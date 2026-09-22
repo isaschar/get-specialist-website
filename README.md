@@ -52,7 +52,7 @@ Have counsel review the Hebrew and English drafts before any public launch. The 
 
 ## Brand
 
-White surfaces `#FFFFFF` and `#F7F9FA`, text `#141414`, accent `#009DE0`, highlight `#00C2E8`, borders `#E8ECF0`. The mark is an original house icon. Do not add third-party delivery logos or names.
+White surfaces `#FFFFFF` and `#F7F9FA`, text `#141414`, accent `#009DE0`, highlight `#00C2E8`, borders `#E8ECF0`. The home hero uses the `#00C2E8` field with white type; the footer is `#141414`. The mark is an original house icon. Do not add third-party delivery logos or names.
 
 ## Stack
 

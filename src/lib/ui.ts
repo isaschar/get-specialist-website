@@ -1,5 +1,5 @@
 export const btnPrimary =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-[15px] font-semibold leading-none text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-full bg-glow px-5 py-2.5 text-[15px] font-semibold leading-none text-ink transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50";
 
 export const btnSecondary =
   "inline-flex items-center justify-center gap-2 rounded-full border border-line bg-paper px-5 py-3 text-[15px] font-semibold leading-none text-ink transition hover:border-ink/30 disabled:cursor-not-allowed disabled:opacity-50";

@@ -14,7 +14,7 @@ export function LogoMark({ className = "size-9" }: { className?: string }) {
   );
 }
 
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({ compact = false, tone = "dark" }: { compact?: boolean; tone?: "dark" | "light" }) {
   const locale = useLocale();
   const primary = locale === "he" ? "מגיע מומחה" : "Get Specialist";
   const secondary = locale === "he" ? "Get Specialist" : "מגיע מומחה";
@@ -23,11 +23,11 @@ export function Logo({ compact = false }: { compact?: boolean }) {
     <span className="inline-flex items-center gap-2.5">
       <LogoMark />
       <span className="leading-tight">
-        <span className="block text-[15px] font-extrabold tracking-tight text-ink">
+        <span className={`block text-[15px] font-bold tracking-tight ${tone === "light" ? "text-white" : "text-ink"}`}>
           {primary}
         </span>
         {!compact && (
-          <span className="block text-xs font-medium text-ink/60">{secondary}</span>
+          <span className={`block text-xs font-medium ${tone === "light" ? "text-white/60" : "text-ink/60"}`}>{secondary}</span>
         )}
       </span>
     </span>
